@@ -1,10 +1,6 @@
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
-
-@layer utilities {
+@tailwind utilities;@layer utilities {
   .text-balance {
     text-wrap: balance;
   }
@@ -83,7 +79,8 @@
     --sidebar-ring: oklch(0.556 0 0);
   }
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
+    outline-color: var(--ring);
   }
   body {
     @apply bg-background text-foreground;

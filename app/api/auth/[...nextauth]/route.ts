@@ -2,6 +2,7 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import bcrypt from 'bcryptjs';
+import dbConnect from '@/lib/mongodb';
 import User from '@/models/User';
 import Store from '@/models/Store';
 import { cookies } from 'next/headers';
@@ -43,13 +44,8 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      if (account?.provider === 'google') {
-        const email = user.email;
-        if (!email) return false;
-
-        await dbConnect();
-        const existingUser = await User.findOne({ email: email.toLowerCase() });
-
+      if (account?.provider === 'google' && profile?.email) {
+        const { email } = profile;
         await dbConnect();
         const existingUser = await User.findOne({ email: email.toLowerCase() });
         

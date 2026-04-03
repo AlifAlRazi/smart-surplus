@@ -2,7 +2,8 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Home, Map as MapIcon, ShoppingBag, ArrowLeft } from "lucide-react";
+import { Home, Map as MapIcon, ShoppingBag } from "lucide-react";
+import { SignOutButton } from "@/components/sign-out-button";
 
 export default async function CustomerLayout({
   children,
@@ -46,10 +47,7 @@ export default async function CustomerLayout({
                
                <div className="w-px h-6 bg-slate-200 mx-2"></div>
                
-               <Link href="/api/auth/signout" className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-red-500 transition-colors">
-                 <span className="hidden sm:inline">Sign Out</span>
-                 <ArrowLeft className="w-4 h-4 sm:hidden" />
-               </Link>
+               <SignOutButton />
             </div>
           </div>
         </div>

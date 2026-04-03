@@ -2,7 +2,8 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ShieldCheck, ArrowLeft, Users, Store, LineChart } from "lucide-react";
+import { ShieldCheck, Users, Store, LineChart } from "lucide-react";
+import { SignOutButton } from "@/components/sign-out-button";
 
 export default async function AdminLayout({
   children,
@@ -43,10 +44,7 @@ export default async function AdminLayout({
             </div>
 
             <div className="flex items-center gap-4">
-               <Link href="/api/auth/signout" className="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-red-400 transition-colors">
-                 <span>Sign Out</span>
-                 <ArrowLeft className="w-4 h-4" />
-               </Link>
+               <SignOutButton className="text-slate-400 hover:text-red-400" />
             </div>
           </div>
         </div>

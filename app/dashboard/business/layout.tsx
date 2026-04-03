@@ -4,7 +4,8 @@ import dbConnect from "@/lib/mongodb";
 import Store from "@/models/Store";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Store as StoreIcon, Package, ListChecks, ArrowLeft } from "lucide-react";
+import { Store as StoreIcon, Package, ListChecks } from "lucide-react";
+import { SignOutButton } from "@/components/sign-out-button";
 
 export default async function BusinessLayout({
   children,
@@ -73,13 +74,7 @@ export default async function BusinessLayout({
           )}
 
           <div className="mt-8">
-            <Link
-              href="/api/auth/signout"
-              className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md text-red-600 hover:bg-red-50"
-            >
-              <ArrowLeft className="w-5 h-5 text-red-400" />
-              Sign Out
-            </Link>
+            <SignOutButton variant="sidebar" />
           </div>
         </nav>
       </aside>
